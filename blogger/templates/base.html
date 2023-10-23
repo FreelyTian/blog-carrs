@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'stylev0.1.css' %}">
+</head>
+<body>
+    <div class="page-header">
+        <h2> Carrs </h2>
+        <p> Your dose of the car culture</p>
+    </div>
+    <div class="logo">
+        <img src="{% static 'imgs/sedan.png' %}" alt="Carrs logo">
+    </div>
+    <div class="post"> <!-- Div com tudo pra um post -->
+        <div class="header-div">
+            {% block title %}
+            {% endblock %}
+        </div>
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                <button class="round-button" id="right-button" type="submit" name="next_post" value="{{ post.next_post }}" >
+                    <img src="{% static 'imgs/arrow.svg' %}" alt="seta pra direita">
+                </button>
+                <button class="round-button" id="left-button" type="submit" name="previous" value="{{ post.prev_post }}">
+                    <img src="{% static 'imgs/arrow.svg' %}" alt="seta pra esquerda">
+                </button>
+            </form>
+        </div>
+        <div class="content-div">
+            <div class="post-img">
+                {% block post-img %}
+                {% endblock %}
+            </div>
+            <div class="post-text">
+                {% block post-text %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="rodape"></div>
+</footer>
+</html>

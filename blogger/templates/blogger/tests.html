@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% extends 'base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{post.title}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'stylev0.1.css' %}">
+</head>
+<body>
+    {% block title %}
+        <h2> {{post.title}}</h2>
+    {% endblock %}
+    {% block post-img %}
+        <img src="{{post.img.url}}" alt="{{post.title}}">
+    {% endblock %}
+    {% block post-text %}
+        <p> {{post.text|linebreaksbr|safe}} </p>
+    {% endblock %}
+</body>
+</html>
